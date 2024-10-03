@@ -3,20 +3,20 @@
 {% block content %}
 
 <div class="container mt-5">
-    <h1 class="text-center mb-4">Update Runner</h1>
+    <h1 class="text-center mb-4">Update Book</h1>
 
     <!-- Update Runner Form -->
-    <form method="POST" action="{{ url_for('runners.update_runner', runner_id=runner.runner_id) }}">
+    <form method="POST" action="{{ url_for('books.update_book', book_id=book.book_id) }}">
         <div class="form-group">
-            <label for="first_name">First Name</label>
-            <input type="text" class="form-control" id="first_name" name="first_name" value="{{ runner.first_name }}" required>
+            <label for="book_name">Book Name</label>
+            <input type="text" class="form-control" id="book_name" name="book_name" value="{{ book.book_name }}" required>
         </div>
         <div class="form-group">
-            <label for="last_name">Last Name</label>
-            <input type="text" class="form-control" id="last_name" name="last_name" value="{{ runner.last_name }}" required>
+            <label for="book_author">Author</label>
+            <input type="text" class="form-control" id="book_author" name="book_author" value="{{ book.book_author }}" required>
         </div>
-        <button type="submit" class="btn btn-primary">Update Runner</button>
-        <a href="{{ url_for('runners.runner') }}" class="btn btn-secondary">Cancel</a>
+        <button type="submit" class="btn btn-primary">Update Book</button>
+        <a href="{{ url_for('books.book') }}" class="btn btn-secondary">Cancel</a>
     </form>
 </div>
 

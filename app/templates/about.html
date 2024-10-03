@@ -2,7 +2,25 @@
 
 {% block content %}
 
-<h1>About</h1>
+<div class="container" style="margin-top: 100px; color: white;">
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Our Mission</h1>
+</div>
+</div>
 
+<div class="container" style="margin-top: 120 px; color: white;">
+    <div class="text-center mb-4">
+        <p>Here at the NBP Library, our mission is to provide you with the books that you want, and to deliver them to you when you want them. Through providing the best online bookstore and library membership, we are able to keep our brilliant customers reading. Whether it's an old book that you haven't read in years, or a new book you that have been dying to read, we have it.</p>
+    </div>
+</div>
+
+<div class="row justify-content-center mb-4">
+    <div class="col-md-4 text-center">
+        <img src="{{ url_for('static', filename='assets/mission1.png') }}" alt="Image 1" class="img-fluid">
+    </div>
+    <div class="col-md-4 text-center">
+        <img src="{{ url_for('static', filename='assets/mission2.png') }}" alt="Image 1" class="img-fluid">
+    </div>
+</div>
 
 {% endblock %}

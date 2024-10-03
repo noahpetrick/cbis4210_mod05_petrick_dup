@@ -2,8 +2,13 @@
 
 {% block content %}
 
-<h1>Welcome to Tyler Marshall's Best Website</h1>
-<br>
-<img src="{{ url_for('static', filename='assets/tyler.jpg') }}" alt="Tyler with his cool Glasses" width="300">
-
+    <div class="container" style="margin-top: 150px;">
+        <div class="jumbotron text-center mt-5" style="background-color: #4B3621; color: #FFFFFF;">
+            <h1 class="display-4">Welcome to The NBP Library</h1>
+            <p class="lead">Read the books you want, when you want, for the price you want, and at the convenience you need. </p>
+            <hr class="my-4" style="border-color: #FFFFFF;">
+            <p>View our available books here!</p>
+            <a class="btn btn-primary btn-lg" href="{{ url_for('books.book') }}" role="button">Catalog</a>
+        </div>
+    </div>
 {% endblock %}

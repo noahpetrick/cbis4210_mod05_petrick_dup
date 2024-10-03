@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4" style="color: white;">Contact Us</h1>
+    <p class="text-center" style="color: white;">Contact us to learn more. If you want to become an NBP member, submit your request below!</p>
+
+    <div class="row mb-5">
+        <div class="col-md-6">
+            <div class="card shadow-sm mb-4" style="background-color: #4B3621; color: #FFFFFF;">
+                <div class="card-body">
+                    <h5 class="card-title">Call or Email Us</h5>
+                    <p>Phone: <a href="tel:5555555555">555-555-5555</a></p>
+                    <p>Email: <a href="mailto:NBPlibrary@gmail.com">NBPlibrary@gmail.com</a></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card shadow-sm mb-4" style="background-color: #4B3621; color: #FFFFFF;">
+                <div class="card-body">
+                    <h5 class="card-title">Submit a Request</h5>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Your First and Last Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Request</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
