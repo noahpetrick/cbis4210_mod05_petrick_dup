@@ -9,10 +9,6 @@ def index():
 def about():
     return render_template('about.html')
 
-@app.route('/membership')
-def membership():
-    return render_template('membership.html')
-
 @app.route('/contact')
 def contact():
     return render_template('contact.html')

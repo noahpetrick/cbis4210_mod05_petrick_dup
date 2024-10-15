@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>The NBP Library</title>
+    <title>Petrick's Pets and Accessories</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
-     body { background-color: #6B8E23; } /* Light green background */
-    .navbar { background-color: #006400 !important; } /* Dark green navigation bar */
+     body { background-color: #87CEFA; } /* Light blue background */
+    .navbar { background-color: #00008B !important; } /* Dark blue navigation bar */
     .navbar .nav-link, .navbar .navbar-brand { color: white !important; } /* White navigation links */
     .table tbody tr td { color: white; } /* White font color for table rows */
     </style>
@@ -15,7 +15,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">
-        <img src="{{ url_for('static', filename='assets/logo.png') }}" alt="Logo" width="40" height="40" class="d-inline-block align-text-top">
+        <img src="{{ url_for('static', filename='assets/navlogo.png') }}" alt="Logo" width="50" height="50" class="d-inline-block align-text-top">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -29,10 +29,10 @@
                 <a class="nav-link" href="{{ url_for('about') }}">About Us</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('books.book') }}">Catalog</a>
+                <a class="nav-link" href="{{ url_for('pets.pet') }}">Adopt</a>
             </li>
-             <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('membership') }}">Membership</a>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('products.product') }}">Shop</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ url_for('contact') }}">Contact Us</a>
@@ -47,8 +47,8 @@
 
 <footer class="footer mt-auto py-3 bg-#6B8E23 text-white">
     <div class="container text-center">
-        <img src="{{ url_for('static', filename='assets/logo.png') }}" alt="Footer Logo" width="100" height="100" class="mb-3">
-        <p>© 2024 The NBP Library. All rights reserved.</p>
+        <img src="{{ url_for('static', filename='assets/pagelogo.png') }}" alt="Footer Logo" width="200" height="200" class="mb-3">
+        <p>© 2024 Petrick's Pets. All rights reserved.</p>
     </div>
 </footer>
 

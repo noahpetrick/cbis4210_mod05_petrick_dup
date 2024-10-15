@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container" style="color: #00008B;">
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Available Products</h1>
+
+    <!-- Form to add a new product -->
+    <form method="POST" action="{{ url_for('products.product') }}" class="mb-4">
+        <div class="form-row">
+            <div class="col">
+                <input type="text" class="form-control" name="product_name" placeholder="Product" required>
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" name="product_price" placeholder="Price" required>
+            </div>
+            <div class="col">
+                <button type="submit" class="btn btn-primary">Add Product</button>
+            </div>
+        </div>
+    </form>
+
+    <!-- Table to display all products -->
+    <table class="table table-striped table-bordered">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Product ID</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in all_products %}
+            <tr>
+                <td>{{ product.product_id }}</td>
+                <td>{{ product.product_name }}</td>
+                <td>{{ product.product_price }}</td>
+                <td>
+                    <!-- Update button -->
+                    <a href="{{ url_for('products.update_product', product_id=product.product_id) }}" class="btn btn-warning btn-sm">Update</a>
+                    <!-- Delete button -->
+                    <form action="{{ url_for('products.delete_product', product_id=product.product_id) }}" method="POST" style="display:inline;">
+                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this pet?');">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+</div>
+
+<div class="container" style="color: #00008B;">
+    <h1 class="text-center mb-4">Popular Products</h1>
+</div>
+<div class="d-flex flex-column justify-content-center align-items-center">
+     <div class="col-md-4">
+                <div class="card mb-4 shadow-sm card-uniform">
+                    <img src="/static/assets/p1.png" class="card-img-top" alt="These animals were never really adopted">
+                    <div class="card-body">
+                        <h5 class="card-title">Dog Leash</h5>
+                        <p class="card-text">$19.99</p>
+                    </div>
+                </div>
+    </div>
+    <div class="col-md-4">
+                <div class="card mb-4 shadow-sm card-uniform">
+                    <img src="/static/assets/p2.png" class="card-img-top" alt="These animals were never really adopted">
+                    <div class="card-body">
+                        <h5 class="card-title">Chew Toy</h5>
+                        <p class="card-text">$7.99</p>
+                    </div>
+                </div>
+    </div>
+    <div class="col-md-4">
+                <div class="card mb-4 shadow-sm card-uniform">
+                    <img src="/static/assets/p3.png" class="card-img-top" alt="These animals were never really adopted">
+                    <div class="card-body">
+                        <h5 class="card-title">Dual Automatic Pet Feeder</h5>
+                        <p class="card-text">$74.99</p>
+                    </div>
+                </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -6,9 +6,11 @@ app = create_app()
 app.secret_key = 'your-secret'  # Replace with an environment variable
 
 # Register Blueprints
-from app.blueprints.books import books
+from app.blueprints.pets import pets
+from app.blueprints.products import products
 
-app.register_blueprint(books)
+app.register_blueprint(pets)
+app.register_blueprint(products)
 
 from . import routes
 
