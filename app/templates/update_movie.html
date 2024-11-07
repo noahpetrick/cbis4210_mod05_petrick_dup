@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4" style="color: #FFFFFF">Update Movie</h1>
+
+    <!-- Form to update a movie -->
+    <form method="POST" action="{{ url_for('movies.update_movie', movie_id=movie.movie_id) }}" class="mb-4">
+        <div class="form-row">
+            <div class="form-group col">
+                <input type="text" class="form-control" name="title" value="{{ movie['title'] }}" required>
+            </div>
+            <div class="form-group col">
+                <input type="number" class="form-control" name="release_year" value="{{ movie['release_year'] }}" required>
+            </div>
+            <div class="form-group col">
+                <!-- Genre Selection Dropdown -->
+                <div class="form-group col">
+                    <label for="genre-selection" class="sr-only">Select Genres</label>
+                    <div id="genre-selection" class="genre-dropdown" onclick="toggleGenreDropdown()">
+                        <input type="text" class="form-control" placeholder="Select Genre(s)" readonly>
+                        <div id="genre-dropdown-menu" class="dropdown-menu" style="display: none;">
+                            {% for genre in genres %}
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" name="genres" value="{{ genre['genre_id'] }}"
+                                    {% if genre['genre_id'] in current_genre_ids %}checked{% endif %}>
+                                    <label class="form-check-label">{{ genre['genre_name'] }}</label>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col">
+                <button type="submit" class="btn btn-primary" style="background-color: #000000; border-color: #FFFFFF">Update Movie</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
+
+
+
+
+
+
+

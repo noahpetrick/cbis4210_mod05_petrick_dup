@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<div style="color: #FFFFFF; padding: 10px;">
+    <h1>Update Genre</h1>
+
+  <form method="POST">
+    <div class="form-group">
+      <label for="genre_name">Genre Name</label>
+      <input type="text" class="form-control" id="genre_name" name="genre_name" value="{{ genre.genre_name }}" required>
+    </div>
+    <button type="submit" class="btn btn-primary" style="background-color: #000000; border-color: #FFFFFF">Update Genre</button>
+    <a href="{{ url_for('genres.genre') }}" class="btn btn-secondary">Cancel</a>
+  </form>
+{% endblock %}

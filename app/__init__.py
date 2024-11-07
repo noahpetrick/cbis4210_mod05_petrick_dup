@@ -1,4 +1,4 @@
-from flask import Flask, g
+from flask import   Flask, g
 from .app_factory import create_app
 from .db_connect import close_db, get_db
 
@@ -6,11 +6,13 @@ app = create_app()
 app.secret_key = 'your-secret'  # Replace with an environment variable
 
 # Register Blueprints
-from app.blueprints.pets import pets
-from app.blueprints.products import products
+from app.blueprints.movies import movies
+from app.blueprints.genres import genres
+from app.blueprints.functions import search_bp
 
-app.register_blueprint(pets)
-app.register_blueprint(products)
+app.register_blueprint(movies)
+app.register_blueprint(genres)
+app.register_blueprint(search_bp)
 
 from . import routes
 

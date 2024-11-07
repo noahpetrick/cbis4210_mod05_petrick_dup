@@ -2,58 +2,91 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Petrick's Pets and Accessories</title>
+    <title>Welcome to CINE-MATE</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-     body { background-color: #87CEFA; } /* Light blue background */
-    .navbar { background-color: #00008B !important; } /* Dark blue navigation bar */
-    .navbar .nav-link, .navbar .navbar-brand { color: white !important; } /* White navigation links */
-    .table tbody tr td { color: white; } /* White font color for table rows */
-    </style>
+<style>
+    body {
+        background-image: url('{{ url_for('static', filename='assets/background.jpg') }}');
+        background-size: cover; /* Ensures the image covers the entire background */
+        background-repeat: no-repeat; /* Prevents the image from repeating */
+        background-attachment: fixed; /* Keeps the background image fixed during scrolling */
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+    .navbar { background-color: #000000 !important; }
+    .navbar .nav-link, .navbar .navbar-brand { color: white !important; }
+    .table tbody tr td { color: white; }
+    .genre-container { position: relative; margin-top: 10px; }
+    .genre-dropdown { cursor: pointer; position: relative; }
+    #genre-dropdown-menu { position: absolute; top: 100%; left: 0; right: 0; background-color: white; border: 1px solid #ccc; padding: 10px; z-index: 1000; max-height: 150px; overflow-y: auto; display: none; }
+    .checkbox-group .form-check { margin-bottom: 5px; }
+</style>
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">
+            <img src="{{ url_for('static', filename='assets/navlogo.png') }}" alt="Logo" width="50" height="50" class="d-inline-block align-text-top">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('index') }}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('search.search') }}">Search</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('movies.movie') }}">Movies</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('genres.genre') }}">Genres</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">
-        <img src="{{ url_for('static', filename='assets/navlogo.png') }}" alt="Logo" width="50" height="50" class="d-inline-block align-text-top">
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav mx-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('index') }}">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('about') }}">About Us</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('pets.pet') }}">Adopt</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('products.product') }}">Shop</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('contact') }}">Contact Us</a>
-            </li>
-        </ul>
+    <div class="container">
+        {% block content %}{% endblock %}
     </div>
-</nav>
 
-<div class="container">
-    {% block content %}{% endblock %}
-</div>
+    <footer class="footer mt-auto py-3 bg-#6B8E23 text-white">
+        <div class="container text-center">
+            <img src="{{ url_for('static', filename='assets/pagelogo.png') }}" alt="Footer Logo" width="200" height="200" class="mb-3">
+            <p>© 2024 CINE-MATE. All rights reserved.</p>
+        </div>
+    </footer>
 
-<footer class="footer mt-auto py-3 bg-#6B8E23 text-white">
-    <div class="container text-center">
-        <img src="{{ url_for('static', filename='assets/pagelogo.png') }}" alt="Footer Logo" width="200" height="200" class="mb-3">
-        <p>© 2024 Petrick's Pets. All rights reserved.</p>
-    </div>
-</footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function toggleGenreDropdown() {
+            console.log('Toggle dropdown');
+            const dropdownMenu = document.getElementById('genre-dropdown-menu');
+            dropdownMenu.style.display = dropdownMenu.style.display === 'none' ? 'block' : 'none';
+        }
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM fully loaded and parsed');
+            const genreDropdownMenu = document.getElementById('genre-dropdown-menu');
+            const genreDropdownButton = document.getElementById('genre-selection');
+
+            // Prevent dropdown from closing when clicking inside the menu
+            genreDropdownMenu.addEventListener('click', function(event) {
+                event.stopPropagation();
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!genreDropdownButton.contains(event.target)) {
+                    genreDropdownMenu.style.display = 'none';
+                }
+            });
+        });
+    </script>
 </body>
 </html>

@@ -3,12 +3,11 @@
 {% block content %}
 
     <div class="container" style="margin-top: 150px;">
-        <div class="jumbotron text-center mt-5" style="background-color: #00008B; color: #FFFFFF;">
-            <h1 class="display-4">Welcome to Petrick's Pets!</h1>
-            <p class="lead">The most trusted organization for adopting new and rescued animals, and buying quality products for all fury companions.</p>
+        <div class="jumbotron text-center mt-5" style="background-color: #000000; color: #FFFFFF;">
+            <h1 class="display-4">Welcome to CINE-MATE!</h1>
+            <p class="lead">Home of the world's largest cinema index.</p>
             <hr class="my-4" style="border-color: #FFFFFF;">
-            <p>View our currently available animals here!</p>
-            <a class="btn btn-primary btn-lg" href="{{ url_for('pets.pet') }}" role="button">Abopt Now</a>
-        </div>
+            <p>View our catalog here!</p>
+            <a class="btn btn-primary btn-lg" href="{{ url_for('movies.movie') }}" role="button" style="background-color: #000000; border-color: #FFFFFF">Movies</a>
     </div>
 {% endblock %}
