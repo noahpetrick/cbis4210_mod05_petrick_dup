@@ -8,11 +8,9 @@ app.secret_key = 'your-secret'  # Replace with an environment variable
 # Register Blueprints
 from app.blueprints.movies import movies
 from app.blueprints.genres import genres
-from app.blueprints.functions import search_bp
 
 app.register_blueprint(movies)
 app.register_blueprint(genres)
-app.register_blueprint(search_bp)
 
 from . import routes
 
